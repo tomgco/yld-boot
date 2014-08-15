@@ -1,0 +1,43 @@
+var boot = require("../index")();
+
+mongooseConnect(boot.callback(function(mongoose) {
+  environment.mongoose = mongoose;
+}));
+
+redisConnect(boot.callback(function(redis) {
+  environment.redis = redis;
+}));
+
+exports.run = function() {
+  boot.init(function(err) {
+
+    if(err) {
+      console.error("could not start: " + err);
+      process.exit(1);
+    }
+
+    require("server")(environment)
+      .listen(PORT)
+      .on("listening", function() {
+        console.log("listening on %d", PORT); 
+      });
+
+  });
+}
+
+if (require.main === module) {
+  exports.run();
+}
+
+
+function mongooseConnect(cb) {
+  setTimeout(function() {
+    cb("mongo failed");
+  }, 250);
+}
+
+function redisConnect(cb) {
+  setTimeout(function() {
+    cb();
+  }, 250);
+}

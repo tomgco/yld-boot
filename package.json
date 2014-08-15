@@ -1,0 +1,15 @@
+{
+  "name": "boot",
+  "version": "0.0.0",
+  "description": "var boot = require(\"yld-boot\")(options);",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "get-stack": "~1.0.0",
+    "get-parameter-names": "~0.2.0"
+  }
+}
