@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var boot = require("../index")();
 
 mongooseConnect(boot.callback(function(mongoose) {
